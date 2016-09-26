@@ -1,2 +1,0 @@
-defmodule PhoenixSlime do
-end
