@@ -1,7 +1,7 @@
-defmodule Mix.Tasks.Phoenix.Gen.Html.Slime do
+defmodule Mix.Tasks.Phoenix.Gen.Html.Calime do
   use Mix.Task
 
-  @shortdoc "Generates controller, model and views for an HTML based resource using Slime templates"
+  @shortdoc "Generates controller, model and views for an HTML based resource using Calime templates"
 
   @moduledoc """
   This file was adapted from the original Phoenix html generator found here:
@@ -10,7 +10,7 @@ defmodule Mix.Tasks.Phoenix.Gen.Html.Slime do
 
   Generates a Phoenix resource.
 
-      mix phoenix_slime.gen.html User users name:string age:integer
+      mix phoenix_calime.gen.html User users name:string age:integer
 
   The first argument is the module name followed by
   its plural name (used for resources and schema).
@@ -57,12 +57,12 @@ defmodule Mix.Tasks.Phoenix.Gen.Html.Slime do
       {:eex, "controller_test.exs", "test/controllers/#{path}_controller_test.exs"},
     ]
 
-    Mix.Phoenix.copy_from slime_paths(), "priv/templates/phoenix.gen.html.slime", "", binding, [
-      {:eex, "edit.html.eex",       "web/templates/#{path}/edit.html.slim"},
-      {:eex, "form.html.eex",       "web/templates/#{path}/form.html.slim"},
-      {:eex, "index.html.eex",      "web/templates/#{path}/index.html.slim"},
-      {:eex, "new.html.eex",        "web/templates/#{path}/new.html.slim"},
-      {:eex, "show.html.eex",       "web/templates/#{path}/show.html.slim"},
+    Mix.Phoenix.copy_from calime_paths(), "priv/templates/phoenix.gen.html.cl", "", binding, [
+      {:eex, "edit.html.eex",       "web/templates/#{path}/edit.html.cl"},
+      {:eex, "form.html.eex",       "web/templates/#{path}/form.html.cl"},
+      {:eex, "index.html.eex",      "web/templates/#{path}/index.html.cl"},
+      {:eex, "new.html.eex",        "web/templates/#{path}/new.html.cl"},
+      {:eex, "show.html.eex",       "web/templates/#{path}/show.html.cl"},
     ]
 
     instructions = """
@@ -104,10 +104,10 @@ defmodule Mix.Tasks.Phoenix.Gen.Html.Slime do
 
   defp raise_with_help do
     Mix.raise """
-    mix phoenix_slime.gen.html expects both singular and plural names
+    mix phoenix_calime.gen.html expects both singular and plural names
     of the generated resource followed by any number of attributes:
 
-        mix phoenix_slime.gen.html User users name:string
+        mix phoenix_calime.gen.html User users name:string
     """
   end
 
@@ -150,7 +150,7 @@ defmodule Mix.Tasks.Phoenix.Gen.Html.Slime do
     [".", :phoenix]
   end
 
-  defp slime_paths do
-    [".", :phoenix_slime]
+  defp calime_paths do
+    [".", :phoenix_calime]
   end
 end
